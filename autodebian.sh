@@ -1,45 +1,11 @@
 #!/bin/bash
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | grep -v '192.168'`;
 clear
-echo "
-AUTOSCRIPT BY MuLuu [@MuLuu09]
-
-PLEASE CANCEL ALL PACKAGE POPUP
-
-clear
 echo "START AUTOSCRIPT"
 clear
 echo "SET TIMEZONE KUALA LUMPUT GMT +8"
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime;
-clear
-echo "
-ENABLE IPV4 AND IPV6
 
-COMPLETE 1%
-"
-echo ipv4 >> /etc/modules
-echo ipv6 >> /etc/modules
-sysctl -w net.ipv4.ip_forward=1
-sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-sed -i 's/#net.ipv6.conf.all.forwarding=1/net.ipv6.conf.all.forwarding=1/g' /etc/sysctl.conf
-sudo sysctl -p
-clear
-echo "
-REMOVE SPAM PACKAGE
-
-COMPLETE 10%
-"
-apt-get -y --purge remove samba*;
-apt-get -y --purge remove apache2*;
-apt-get -y --purge remove sendmail*;
-apt-get -y --purge remove postfix*;
-apt-get -y --purge remove bind*;
-clear
-echo "
-UPDATE AND UPGRADE PROCESS 
-
-PLEASE WAIT TAKE TIME 1-5 MINUTE
-"
 apt-get update;apt-get -y upgrade;apt-get -y install wget curl
 echo "
 INSTALLER PROCESS PLEASE WAIT
