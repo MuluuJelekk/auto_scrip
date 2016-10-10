@@ -2,32 +2,10 @@
 myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | grep -v '192.168'`;
 clear
 echo "
-
-      AutoScrip @MuLuu09
-
-[ YOU IP NOT REGISTER FOR MY AUTOSCRIPT ]
-
-     A   U   T   O  -  E   X   I   T
-
-\/\/\/\/\/\/ FOR REGISTER \/\/\/\/\/\/
-[ SMS/Telegram/Whatsapp: +601131731782 ]
-
-"
-rm -rf *.txt
-rm -rf *.sh
-rm -rf dual*
-exit
-fi
-if [ $USER != 'root' ]; then
-	echo "Sorry, for run the script please using root user"
-	exit
-fi
-echo "
 AUTOSCRIPT BY MuLuu [@MuLuu09]
 
 PLEASE CANCEL ALL PACKAGE POPUP
 
-TAKE NOTE !!!"
 clear
 echo "START AUTOSCRIPT"
 clear
