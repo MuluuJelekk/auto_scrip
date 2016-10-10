@@ -1,35 +1,39 @@
 #!/bin/bash
-myip=`ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0' | grep -v '192.168'`;
-clear
-echo "START AUTOSCRIPT"
-clear
-echo "SET TIMEZONE KUALA LUMPUT GMT +8"
-ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime;
 
-apt-get update;apt-get -y upgrade;apt-get -y install wget curl
-echo "
-INSTALLER PROCESS PLEASE WAIT
+# go to root
+cd
 
-TAKE TIME 5-10 MINUTE
-"
+# disable ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+
+# install wget and curl
+apt-get update;apt-get -y install wget curl;
+
+# set time GMT +7
+ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+
+# set locale
+sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
+service ssh restart
 
 wget -O user-list http://rzserver.tk/source/user-list
 if [ -f user-list ]; then
 	mv user-list /usr/local/bin/
 	chmod +x /usr/local/bin/user-list
-fi
+
 
 wget -O menu http://rzserver.tk/source/menu
 if [ -f menu ]; then
 	mv menu /usr/local/bin/
 	chmod +x /usr/local/bin/menu
-fi
+
 
 wget -O monssh http://rzserver.tk/source/monssh
 if [ -f monssh ]; then
 	mv monssh /usr/local/bin/
 	chmod +x /usr/local/bin/monssh
-fi
+
 
 apt-get -y install fail2ban;service fail2ban restart;
 wget http://prdownloads.sourceforge.net/webadmin/webmin_1.820_all.deb
